@@ -49,8 +49,9 @@ terminal = "x-terminal-emulator"
 myMenu = {
  { "phpStorm", "/home/sttv/PhpStorm-171.3780.104/bin/phpstorm.sh" },
  { "pyCharm", "/home/sttv/Downloads/pycharm-community-2016.3.2/bin/pycharm.sh" },
- { "svn", "/home/sttv/Downloads/pycharm-community-2016.3.2/bin/pycharm.sh" },
- { "git", "/home/sttv/Downloads/smartgit/bin/smartgit.sh" }
+ { "svn", "/home/sttv/smartsvn/bin/smartsvn.sh" },
+ { "git", "/home/sttv/Downloads/smartgit/bin/smartgit.sh" },
+ { "Telegram", "/home/sttv/Downloads/Telegram/Telegram" }
 }
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
@@ -111,6 +112,11 @@ myawesomemenu = {
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Debian", debian.menu.Debian_menu.Debian },
                                     { "open terminal", terminal },
+                                    { "Explorers", { 
+{ "Nautilus", "nautilus" }
+, { "Dolphin", "dolphin" }
+--, { "MC", "mc" }
+ } },
                                     { "develop", myMenu }
 --                                    { "phpStorm", phpStorm },
 --                                    { "pyCharm", pyCharm }
@@ -194,7 +200,8 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+--    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -385,7 +392,8 @@ clientkeys = awful.util.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+--for i = 1, 9 do
+for i = 1, 4 do
     globalkeys = awful.util.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
