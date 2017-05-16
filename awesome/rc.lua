@@ -46,6 +46,7 @@ beautiful.init("/home/sttv/.config/awesome/themes/aw/theme.lua")
 
 listAutoStart = {
  "xcompmgr -C &" --enable transparency
+ , "sleep 3; cat /5g.pass | nmcli --ask connection up Cartel-auto5G" -- Network // cat /5g.pass => text-password
 -- , ""
 }
 
@@ -119,7 +120,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                     { "open terminal", terminal },
                                     { "Explorers", { 
 { "Nautilus", "nautilus" }
-, { "Dolphin", "dolphin" }
+--, { "Dolphin", "dolphin" }
 --, { "MC", "mc" }
  } },
                                     { "develop", myMenu }
