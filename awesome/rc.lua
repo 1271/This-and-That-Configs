@@ -44,6 +44,11 @@ end
 --beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 beautiful.init("/home/sttv/.config/awesome/themes/aw/theme.lua")
 
+listAutoStart = {
+ "xcompmgr -C &" --enable transparency
+-- , ""
+}
+
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
 myMenu = {
@@ -456,6 +461,10 @@ for i = 1, 4 do
                   end,
                   {description = "toggle focused client on tag #" .. i, group = "tag"})
     )
+end
+
+for _,i in pairs(listAutoStart) do
+ awful.util.spawn(i)
 end
 
 clientbuttons = awful.util.table.join(
